@@ -20,6 +20,13 @@ export default function Home({ latestProductsData }) {
           ))}
         </div>
       </section>
+      <style jsx>
+        {`
+          h2 {
+            color: green;
+          }
+        `}
+      </style>
     </Layout>
   );
 }

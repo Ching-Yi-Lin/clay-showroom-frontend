@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 
 const name = "Your Name";
@@ -9,7 +7,7 @@ export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,7 +23,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header>
         Header goes here
         {home ? (
           <> </>
@@ -43,9 +41,9 @@ export default function Layout({ children, home }) {
                 />
               </a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
+            <h2>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a>{name}</a>
               </Link>
             </h2>
           </>
@@ -53,7 +51,7 @@ export default function Layout({ children, home }) {
       </header>
       <main>{children}</main>
 
-      <footer className={styles.backToHome}>
+      <footer>
         Footer goes here
         {!home && (
           <Link href="/">
