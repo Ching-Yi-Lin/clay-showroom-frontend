@@ -1,42 +1,35 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
+import Layout from "../components/layout";
 
-export default function Home({ allPostsData }) {
+import { getLatestProductsData } from "../lib/products";
+
+export default function Home({ latestProductsData }) {
   return (
     <Layout home>
       <Head>
         <title>Home | Clay Showroom</title>
       </Head>
-      <section>
-       
-      </section>
-
-      {/* Add this <section> tag below the existing <section> tag */}
-      {/* <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+      <section className="main-landing">Main Landing section</section>
+      <section className="latest-products">
+        <h2>Latest Products</h2>
+        <div className="product-list">
+          {latestProductsData.products.map(({ id, title }) => (
+            <div className="product-list-item" key={id}>
               {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
+            </div>
           ))}
-        </ul>
-      </section> */}
+        </div>
+      </section>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const latestProductsData = getLatestProductsData();
+
   return {
     props: {
-      allPostsData,
+      latestProductsData,
     },
   };
 }
