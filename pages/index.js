@@ -32,7 +32,7 @@ export default function Home({ latestProductsData }) {
 }
 
 export async function getStaticProps() {
-  const latestProductsData = getLatestProductsData();
+  const latestProductsData = await getLatestProductsData();
 
   return {
     props: {
