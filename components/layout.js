@@ -24,30 +24,17 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header>
-        Header goes here
-        {home ? (
-          <> </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <Link href="/">
+          <a>
+            <Image
+              priority
+              src="/images/logo.png"
+              height={28}
+              width={128}
+              alt="Logo"
+            />
+          </a>
+        </Link>
       </header>
       <main>{children}</main>
 
@@ -59,6 +46,14 @@ export default function Layout({ children, home }) {
           </Link>
         )}
       </footer>
+      <style></style>
+      <style jsx>
+        {`
+          h2 {
+            color: green;
+          }
+        `}
+      </style>
     </div>
   );
 }
