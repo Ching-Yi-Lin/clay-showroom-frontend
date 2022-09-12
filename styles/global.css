@@ -9,6 +9,7 @@ body {
 :root {
   --secondary-color: #0d99ff;
   --primary-color: #a8a397;
+  --tertiary-color: #F2EDE2;
 }
 * {
   box-sizing: border-box;

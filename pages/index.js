@@ -28,8 +28,6 @@ export default function Home({ latestProductsData }) {
             <div className="product-list-item" key={product.id}>
               {product.title}
               <img src="images/landing-vase.png" alt="" />
-              <img src="images/landing-mug.png" alt="" />
-              <img src="images/landing-vases.png" alt="" />
             </div>
           ))}
         </div>
