@@ -16,9 +16,9 @@ export default function Home({ latestProductsData }) {
             A Ceramics Marketplace. Find hand-crafted pieces made by local
             ceramists or sell your unique ceramics
           </p>
-          <Button text="SELL" url="/sell"/>
-          <span style={{width: "10px", display: "inline-block"}}></span>
-          <Button text="SHOP" url="/shop"/>
+          <Button text="SELL" url="/sell" />
+          <span style={{ width: "10px", display: "inline-block" }}></span>
+          <Button text="SHOP" url="/shop" />
         </div>
       </section>
       <section className="latest-products">
@@ -27,6 +27,7 @@ export default function Home({ latestProductsData }) {
           {latestProductsData.products.map((product) => (
             <div className="product-list-item" key={product.id}>
               {product.title}
+              <img src="images/landing-vase.png" alt="" />
             </div>
           ))}
         </div>
@@ -40,7 +41,6 @@ export default function Home({ latestProductsData }) {
             text-align: right;
             background: url(images/landing-bg.png) no-repeat center center fixed;
             background-size: cover;
-
           }
 
           .main-landing .content {
@@ -50,9 +50,12 @@ export default function Home({ latestProductsData }) {
           p {
             color: white;
           }
-          .sell-btn{ 
+          .sell-btn {
             color: black;
             margin-right: 10px;
+          }
+          .product-list .product-list-item {
+            display: inline-block;
           }
         `}
       </style>
