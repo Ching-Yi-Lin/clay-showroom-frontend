@@ -152,13 +152,13 @@ export default function Home({}) {
             border-left: none;
             border-right: none;
             caret-color: #fff;
-            color: #fff;
+            color: #1E1E1E;
             transition: all 200ms;
             border-bottom-color: #fff;
           }
 
           .form-item input:focus {
-            border-bottom-color: coral;
+            border-bottom-color: var(--secondary-color);
           }
 
           ::placeholder,
@@ -188,6 +188,7 @@ export default function Home({}) {
           }
           .form-item a {
             text-decoration: none;
+      
           }
 
           .is-link {
