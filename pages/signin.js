@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/layout";
-import { createUser } from "../lib/users";
+import { login } from "../lib/users";
 import { useRouter } from "next/router";
 
 export default function Home({}) {
@@ -8,40 +8,30 @@ export default function Home({}) {
   async function processSubmission(event) {
     event.preventDefault();
     const data = {
-      fullName: event.target.fullName.value,
       email: event.target.email.value,
       password: event.target.password.value,
-      confirmPassword: event.target.confirmPassword.value,
     };
 
-    await createUser(data).then(() => {
-      router.push("/");
+    await login(data).then((res) => {
+  
+      if (res.status === 401) {
+       alert("Oops! Sorry you can't come in")
+      }
+      if (res.status === 200) {
+        router.push("/seller-products");
+      }
     });
   }
   return (
     <Layout home>
       <Head>
-        <title>Sign Up | Clay Showroom</title>
+        <title>Sign In | Clay Showroom</title>
       </Head>
-      <section className="sign-up">SIGN UP</section>
+      <section className="sign-in">SIGN IN</section>
       <div className="container">
         <form className="form" onSubmit={processSubmission}>
           <div className="avatar">
-            <img
-              src="images/signin-logo.png"
-              alt="avatar"
-            />
-          </div>
-          <div className="form-item">
-            <label for="fullname">Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              className="is-input"
-              placeholder="Full Name"
-              id="fullname"
-              autocomplete="off"
-            />
+            <img src="images/signin-logo.png" alt="avatar" />
           </div>
 
           <div className="form-item">
@@ -65,27 +55,21 @@ export default function Home({}) {
               id="password"
             />
           </div>
-          <div className="form-item">
-            <label for="confrim-password">Confirm Password</label>
-            <input
-              type="text"
-              name="confirmPassword"
-              className="is-input"
-              placeholder="Confirm Password"
-              id="confirm-password"
-              autocomplete="off"
-            />
-          </div>
 
           <div className="form-item">
             <button type="submit" className="button is-button">
-              SIGN UP
+              SIGN IN
             </button>
+          </div>
+          <div class="form-item">
+            <a href="#" className="text-link">
+              Forgot Password?
+            </a>
           </div>
 
           <div className="form-item">
             <a href="#" className="button is-link">
-              SIGN IN
+              SIGN UP
             </a>
           </div>
         </form>
@@ -93,7 +77,7 @@ export default function Home({}) {
 
       <style jsx>
         {`
-          .sign-up {
+          .sign-in {
             margin-top: 11px;
             margin-left: 45px;
             padding-top: 6px;
@@ -186,9 +170,16 @@ export default function Home({}) {
             cursor: pointer;
             background: rgba(255, 56, 56, 0.7);
           }
+          
           .form-item a {
             text-decoration: none;
-      
+            color:#black;
+          
+          }
+          .text-link{
+            font-size: 12px;
+            color: #1E1E1E;
+            margin-left: 10px;
           }
 
           .is-link {
@@ -202,6 +193,7 @@ export default function Home({}) {
           .is-link:hover {
             text-decoration: underline;
           }
+          .
         `}
       </style>
     </Layout>

@@ -8,10 +8,11 @@ export default function Home({}) {
   async function processSubmission(event) {
     event.preventDefault();
     const data = {
-      fullName: event.target.fullName.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-      confirmPassword: event.target.confirmPassword.value,
+      productName: event.target.productName.value,
+      category: event.target.category.value,
+      price: event.target.price.value,
+      description: event.target.description.value,
+      imageUrl: event.target.imageUrl.value,
     };
 
     await createUser(data).then(() => {
@@ -21,71 +22,82 @@ export default function Home({}) {
   return (
     <Layout home>
       <Head>
-        <title>Sign Up | Clay Showroom</title>
+        <title>Add/Edit Product | Clay Showroom</title>
       </Head>
-      <section className="sign-up">SIGN UP</section>
+      <section className="add-edit">ADD/EDIT PRODUCT</section>
       <div className="container">
         <form className="form" onSubmit={processSubmission}>
-          <div className="avatar">
+          {/* <div className="avatar">
             <img
-              src="images/signin-logo.png"
+              src="https://res.cloudinary.com/merobusts/image/upload/v1518264117/head-659651_640.png"
               alt="avatar"
             />
-          </div>
+          </div> */}
           <div className="form-item">
-            <label for="fullname">Full Name</label>
+            <label for="productname">Product Name</label>
             <input
               type="text"
-              name="fullName"
+              name="productName"
               className="is-input"
-              placeholder="Full Name"
-              id="fullname"
+              placeholder="Product Name"
+              id="productname"
               autocomplete="off"
             />
           </div>
 
           <div className="form-item">
-            <label for="email">Email</label>
+            <label for="category">Category</label>
             <input
               type="text"
-              name="email"
+              name="category"
               className="is-input"
-              placeholder="Email"
-              id="email"
+              placeholder="Category"
+              id="category"
               autocomplete="off"
             />
           </div>
           <div className="form-item">
-            <label for="password">Password</label>
+            <label for="price">Price</label>
             <input
-              type="password"
-              name="password"
+              type="number"
+              name="price"
               className="is-input"
-              placeholder="Password"
-              id="password"
+              placeholder="Price"
+              id="price"
             />
           </div>
           <div className="form-item">
-            <label for="confrim-password">Confirm Password</label>
+            <label for="description">Description</label>
             <input
               type="text"
-              name="confirmPassword"
+              name="description"
               className="is-input"
-              placeholder="Confirm Password"
-              id="confirm-password"
+              placeholder="Description"
+              id="description"
+              autocomplete="off"
+            />
+          </div>
+          <div className="form-item">
+            <label for="imageUrl">ImageURL</label>
+            <input
+              type="text"
+              name="imageUrl"
+              className="is-input"
+              placeholder="ImageUrl"
+              id="imageUrl"
               autocomplete="off"
             />
           </div>
 
           <div className="form-item">
             <button type="submit" className="button is-button">
-              SIGN UP
+              SUBMIT
             </button>
           </div>
 
           <div className="form-item">
             <a href="#" className="button is-link">
-              SIGN IN
+              CANCEL
             </a>
           </div>
         </form>
@@ -93,7 +105,7 @@ export default function Home({}) {
 
       <style jsx>
         {`
-          .sign-up {
+          .add-edit {
             margin-top: 11px;
             margin-left: 45px;
             padding-top: 6px;
