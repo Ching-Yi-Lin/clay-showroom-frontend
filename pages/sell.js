@@ -14,6 +14,7 @@ export default function Home({ }) {
           h2 {
             color: green;
           }
+          
         `}
       </style>
     </Layout>
