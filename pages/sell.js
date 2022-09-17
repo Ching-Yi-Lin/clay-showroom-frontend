@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-import { getLatestProductsData } from "../lib/products";
+import { getLatestProductsData,deleteProduct } from "../lib/products";
 
 export default function Home({ latestProductsData }) {
-  function deleteProduct(id){
-    
+ async function deleteItem(id) {
+await deleteProduct(id);
   }
   return (
     <Layout home>
@@ -13,31 +13,33 @@ export default function Home({ latestProductsData }) {
         <title>Sell | Clay Showroom</title>
       </Head>
       <section className="sell">YOUR PRODUCTS</section>
-       
+
       <section className="your-products">
         <div className="product-list">
-
           {latestProductsData.products.map((product) => (
             <div className="product-list-item" key={product.id}>
-              
               <img src="images/landing-vase.png" alt="" />
-              {product.title}
+              {product.name}
 
-              <div className="edit-delete-buttons"> 
-                <Button text="EDIT" url="/add-edit" />
-                <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
-              </div> 
-              
+              <div className="edit-delete-buttons">
+                <Button
+                  text="EDIT"
+                  url={`/add-edit?type=edit&id=${product.id}`}
+                />
+                <Button
+                  text="DELETE"
+                  onClick={() => deleteItem(product.id)}
+                />
+              </div>
             </div>
           ))}
         </div>
-        
+
         <div className="create-button">
-            <button type="button" className="button is-button">
-              CREATE NEW PRODUCT
-            </button>
+          <button type="button" className="button is-button">
+            CREATE NEW PRODUCT
+          </button>
         </div>
-        
       </section>
 
       <style jsx>
@@ -48,18 +50,17 @@ export default function Home({ latestProductsData }) {
             padding-top: 6px;
           }
 
-          .your-products{
+          .your-products {
             margin-left: 45px;
             margin-right: 45px;
             padding: 20px;
-            background-color: #F2EDE2
+            background-color: #f2ede2;
           }
 
           .edit-delete-buttons {
             display: inline-block;
             border: 1px solid red;
             padding: 20px;
-            
           }
 
           button {
@@ -80,7 +81,6 @@ export default function Home({ latestProductsData }) {
             cursor: pointer;
             background: rgba(255, 56, 56, 0.7);
           }
-
         `}
       </style>
     </Layout>
