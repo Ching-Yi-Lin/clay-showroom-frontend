@@ -34,11 +34,11 @@ export default function Home({}) {
     };
     if (router.query.type === "add") {
       await createProduct(data).then(() => {
-        router.push("/seller-products");
+        router.push("/sell");
       });
     } else if (router.query.type === "edit") {
       await updateProduct(data, router.query.id).then(() => {
-        router.push("/seller-products");
+        router.push("/sell");
       });
     }
   }
