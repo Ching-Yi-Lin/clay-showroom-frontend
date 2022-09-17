@@ -23,11 +23,9 @@ export default function Home({ latestProductsData }) {
       <div className={styles.content}>
         <h2>Clay Showroom</h2>
         <p className={styles.paragraph}>
-          <br/>
            Connecting local ceramists with ceramic enthusiasts. We are an online platform where Ceramists can list and sell their products and the others can purchase their goods. <br/> <br/>
            Shop now or sell now by clicking the buttons below!<br/><br/>
           </p>
-          <br/>
         </div>
         <Button text="SELL" url="/sell" />
           <span style={{ width: "10px", display: "inline-block"}}></span>
