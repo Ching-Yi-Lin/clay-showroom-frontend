@@ -1,47 +1,75 @@
 import Head from "next/head";
 import Layout from "../components/layout";
-import { createUser } from "../lib/users";
+import { createProduct, getProductById, updateProduct } from "../lib/products";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function Home({}) {
   const router = useRouter();
+  const [product, setProduct] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    imageUrl: "",
+  });
+
+  useEffect(async () => {
+    if (router.query.type === "add") {
+      console.log("add");
+    } else if (router.query.type === "edit") {
+      const res = await getProductById(router.query.id);
+      setProduct(res.product);
+    }
+  }, [router.query]);
+
   async function processSubmission(event) {
     event.preventDefault();
     const data = {
-      productName: event.target.productName.value,
+      name: event.target.name.value,
       category: event.target.category.value,
       price: event.target.price.value,
       description: event.target.description.value,
       imageUrl: event.target.imageUrl.value,
+      userId: "631efc036747752e94b7e365",
     };
-
-    await createUser(data).then(() => {
-      router.push("/");
-    });
+    if (router.query.type === "add") {
+      await createProduct(data).then(() => {
+        router.push("/seller-products");
+      });
+    } else if (router.query.type === "edit") {
+      await updateProduct(data, router.query.id).then(() => {
+        router.push("/seller-products");
+      });
+    }
   }
+
+  const onChangeProduct = (e) => {
+    const name = e.target.name;
+    const newValue = { ...product, [name]: e.target.value };
+    setProduct(newValue);
+  };
   return (
     <Layout home>
       <Head>
         <title>Add/Edit Product | Clay Showroom</title>
       </Head>
-      <section className="add-edit">ADD/EDIT PRODUCT</section>
+      <section className="add-edit">
+        {router.query && router.query.type === "add" && "ADD"}
+        {router.query && router.query.type === "edit" && "EDIT"} PRODUCT
+      </section>
       <div className="container">
         <form className="form" onSubmit={processSubmission}>
-          {/* <div className="avatar">
-            <img
-              src="https://res.cloudinary.com/merobusts/image/upload/v1518264117/head-659651_640.png"
-              alt="avatar"
-            />
-          </div> */}
           <div className="form-item">
-            <label for="productname">Product Name</label>
+            <label for="name">Product Name</label>
             <input
               type="text"
-              name="productName"
+              name="name"
               className="is-input"
               placeholder="Product Name"
-              id="productname"
-              autocomplete="off"
+              id="name"
+              autoComplete="off"
+              value={product.name}
+              onChange={onChangeProduct}
             />
           </div>
 
@@ -53,7 +81,9 @@ export default function Home({}) {
               className="is-input"
               placeholder="Category"
               id="category"
-              autocomplete="off"
+              autoComplete="off"
+              value={product.category}
+              onChange={onChangeProduct}
             />
           </div>
           <div className="form-item">
@@ -64,6 +94,8 @@ export default function Home({}) {
               className="is-input"
               placeholder="Price"
               id="price"
+              value={product.price}
+              onChange={onChangeProduct}
             />
           </div>
           <div className="form-item">
@@ -74,7 +106,9 @@ export default function Home({}) {
               className="is-input"
               placeholder="Description"
               id="description"
-              autocomplete="off"
+              autoComplete="off"
+              value={product.description}
+              onChange={onChangeProduct}
             />
           </div>
           <div className="form-item">
@@ -85,7 +119,9 @@ export default function Home({}) {
               className="is-input"
               placeholder="ImageUrl"
               id="imageUrl"
-              autocomplete="off"
+              autoComplete="off"
+              value={product.imageUrl}
+              onChange={onChangeProduct}
             />
           </div>
 
@@ -164,7 +200,7 @@ export default function Home({}) {
             border-left: none;
             border-right: none;
             caret-color: #fff;
-            color: #1E1E1E;
+            color: #1e1e1e;
             transition: all 200ms;
             border-bottom-color: #fff;
           }
@@ -200,7 +236,6 @@ export default function Home({}) {
           }
           .form-item a {
             text-decoration: none;
-      
           }
 
           .is-link {
