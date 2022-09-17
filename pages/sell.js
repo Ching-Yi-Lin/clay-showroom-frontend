@@ -4,6 +4,9 @@ import Button from "../components/button";
 import { getLatestProductsData } from "../lib/products";
 
 export default function Home({ latestProductsData }) {
+  function deleteProduct(id){
+    
+  }
   return (
     <Layout home>
       <Head>
@@ -22,7 +25,7 @@ export default function Home({ latestProductsData }) {
 
               <div className="edit-delete-buttons"> 
                 <Button text="EDIT" url="/add-edit" />
-                <Button text="DELETE" url="/shop" />    
+                <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
               </div> 
               
             </div>
