@@ -39,18 +39,99 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       <footer>
-        Footer goes here
-        {!home && (
+        <div className="bottom-bar">
           <Link href="/">
-            <a>← Back to home</a>
+            <a>
+              <div className="icon-btn">
+                <Image
+                  src="/images/icon-home.png"
+                  alt="home"
+                  width={28}
+                  height={28}
+                />
+                <div className="label">Home</div>
+              </div>
+            </a>
           </Link>
-        )}
+          <Link href="/about">
+            <a>
+              <div className="icon-btn">
+                <Image
+                  src="/images/icon-about.png"
+                  alt="about"
+                  width={28}
+                  height={28}
+                />
+                <div className="label">About</div>
+              </div>
+            </a>
+          </Link>
+          <Link href="/cartabout">
+            <a>
+              <div className="icon-btn">
+                <Image
+                  src="/images/icon-cart.png"
+                  alt="cart"
+                  width={28}
+                  height={28}
+                />
+                <div className="label">Cart</div>
+              </div>
+            </a>
+          </Link>
+          <Link href="/shop">
+            <a>
+              <div className="icon-btn">
+                <Image
+                  src="/images/icon-shop.png"
+                  alt="shop"
+                  width={28}
+                  height={28}
+                />
+                <div className="label">Shop</div>
+              </div>
+            </a>
+          </Link>
+          <Link href="/signin">
+            <a>
+              <div className="icon-btn">
+                <Image
+                  src="/images/icon-profile.png"
+                  alt="profile"
+                  width={28}
+                  height={28}
+                />
+                <div className="label">Profile</div>
+              </div>
+            </a>
+          </Link>
+
+          
+        </div>
       </footer>
       <style></style>
       <style jsx>
         {`
-          h2 {
-            color: green;
+          .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            background-color: #a8a397;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .bottom-bar .icon-btn {
+            padding: 8px 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+          .bottom-bar .label {
+            color: white;
+            font-size: 10px;
           }
         `}
       </style>
