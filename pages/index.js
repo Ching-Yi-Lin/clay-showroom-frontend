@@ -39,7 +39,7 @@ export default function Home({ latestProductsData }) {
             padding: 80px 20px;
 
             text-align: right;
-            background: url(images/landing-bg.png) no-repeat center center fixed;
+            background: url(images/landing-bg.png) center;
             background-size: cover;
           }
 
