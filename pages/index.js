@@ -27,7 +27,7 @@ export default function Home({ latestProductsData }) {
           {latestProductsData.products.map((product) => (
             <div className="product-list-item" key={product.id}>
               {product.title}
-              <img src="images/landing-vase.png" alt="" />
+              <img src={product.imageUrl} alt="" />
             </div>
           ))}
         </div>
@@ -54,8 +54,15 @@ export default function Home({ latestProductsData }) {
             color: black;
             margin-right: 10px;
           }
-          .product-list .product-list-item {
-            display: inline-block;
+          .product-list {
+            display: flex;
+          }
+          h2 {
+            font-size: large;
+            font-family: Montserrat;
+            margin-left: 24px;
+            margin-top: 22px;
+            font-weight: lighter;
           }
         `}
       </style>
