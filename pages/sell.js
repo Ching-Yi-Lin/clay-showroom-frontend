@@ -1,11 +1,13 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-import { getLatestProductsData } from "../lib/products";
+
+import { getLatestProductsData, deleteProduct } from "../lib/products";
+import Link from "next/link";
 
 export default function Home({ latestProductsData }) {
-  function deleteProduct(id){
-    
+  async function deleteItem(id) {
+    await deleteProduct(id);
   }
   return (
     <Layout home>
@@ -27,12 +29,14 @@ export default function Home({ latestProductsData }) {
                   {product.title}  
                 </div>
 
+
               <div className="float-child">
                 <div className="edit-delete-buttons"> 
-                  <Button text="EDIT" url="/add-edit" />
+                  <Button text="EDIT" url={`/add-edit?type=edit&id=${product.id}`} />
                   <span style={{ margin: "5px", display: "inline-block"}}></span>
                   <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
                 </div> 
+
               </div>
             </div>
             ))}
@@ -41,7 +45,11 @@ export default function Home({ latestProductsData }) {
         </div>
         
         <div className="create-button">
-            <Button text="CREATE NEW PRODUCT" type="button" url="/add-edit" />
+          <Link href="/add-edit?type=add">
+            <a>
+              <div className="button is-button">CREATE NEW PRODUCT</div>
+            </a>
+          </Link>
         </div>
         
       </section>

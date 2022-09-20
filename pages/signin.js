@@ -13,12 +13,11 @@ export default function Home({}) {
     };
 
     await login(data).then((res) => {
-  
       if (res.status === 401) {
-       alert("Oops! Sorry you can't come in")
+        alert("Oops! Sorry you can't come in");
       }
       if (res.status === 200) {
-        router.push("/seller-products");
+        router.push("/sell");
       }
     });
   }
@@ -68,7 +67,7 @@ export default function Home({}) {
           </div>
 
           <div className="form-item">
-            <a href="#" className="button is-link">
+            <a href="signup" className="button is-link">
               SIGN UP
             </a>
           </div>

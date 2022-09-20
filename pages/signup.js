@@ -84,7 +84,7 @@ export default function Home({}) {
           </div>
 
           <div className="form-item">
-            <a href="#" className="button is-link">
+            <a href="signin" className="button is-link">
               SIGN IN
             </a>
           </div>
@@ -105,11 +105,11 @@ export default function Home({}) {
             align-items: center;
           }
           .form {
-            margin-top: 28px;
+            margin-top: 8px;
             position: relative;
 
             background: var(--tertiary-color);
-            padding: 60px 10px 20px 10px;
+            padding: 25px 10px 20px 10px;
 
             display: flex;
             flex-direction: column;

@@ -6,6 +6,13 @@ const name = "Your Name";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
   return (
     <div>
       <Head>
@@ -32,10 +39,45 @@ export default function Layout({ children, home }) {
               height={28}
               width={128}
               alt="Logo"
+          
             />
           </a>
         </Link>
+        <span className="hamburger" onClick={openNav}>
+          &#9776;{" "}
+        </span>
+
+        
       </header>
+      <div id="mySidenav" className="sidenav">
+          <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
+            &times;
+          </a>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+
+          <Link href="/shop">
+            <a>Shop</a>
+          </Link>
+
+          <Link href="/cart">
+            <a>Cart</a>
+          </Link>
+
+          <Link href="/signin">
+            <a>Login</a>
+          </Link>
+
+          <Link href="/">
+            <a>Logout</a>
+          </Link>
+
+        </div>
       <main>{children}</main>
 
       <footer>
@@ -105,13 +147,17 @@ export default function Layout({ children, home }) {
               </div>
             </a>
           </Link>
-
-          
         </div>
       </footer>
       <style></style>
       <style jsx>
         {`
+         header{
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+          margin-right: 21px;
+        }
           .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -132,6 +178,55 @@ export default function Layout({ children, home }) {
           .bottom-bar .label {
             color: white;
             font-size: 10px;
+          }
+
+          /* hamburger menu*/
+          .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 5;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            text-align: center;
+          }
+
+          .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+          }
+
+          .sidenav a:hover {
+            color: #f1f1f1;
+          }
+
+          .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+          }
+
+          @media screen and (max-height: 450px) {
+            .sidenav {
+              padding-top: 15px;
+            }
+            .sidenav a {
+              font-size: 18px;
+            }
+          }
+          .hamburger {
+            font-size: 18px;
+            cursor: pointer;
           }
         `}
       </style>
