@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-import { getLatestProductsData,deleteProduct } from "../lib/products";
+import { getLatestProductsData } from "../lib/products";
 
 export default function Home({ latestProductsData }) {
- async function deleteItem(id) {
-await deleteProduct(id);
+  function deleteProduct(id){
+    
   }
   return (
     <Layout home>
@@ -13,34 +13,39 @@ await deleteProduct(id);
         <title>Sell | Clay Showroom</title>
       </Head>
       <section className="sell">YOUR PRODUCTS</section>
-
+      
+      
       <section className="your-products">
-        <div className="product-list">
-          {latestProductsData.products.map((product) => (
-            <div className="product-list-item" key={product.id}>
-              <img src="images/landing-vase.png" alt="" />
-              {product.name}
+        <div className="centre">
+          <div className="product-list">
+            
+            {latestProductsData.products.map((product) => (
+            
+              <div className="float-child">
+                <div className="product-list-item" key={product.id}>                
+                  <img src="images/landing-vase.png" alt="" />
+                  {product.title}  
+                </div>
 
-              <div className="edit-delete-buttons">
-                <Button
-                  text="EDIT"
-                  url={`/add-edit?type=edit&id=${product.id}`}
-                />
-                <Button
-                  text="DELETE"
-                  onClick={() => deleteItem(product.id)}
-                />
+              <div className="float-child">
+                <div className="edit-delete-buttons"> 
+                  <Button text="EDIT" url="/add-edit" />
+                  <span style={{ margin: "5px", display: "inline-block"}}></span>
+                  <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
+                </div> 
               </div>
             </div>
-          ))}
+            ))}
+            
+          </div>
         </div>
-
+        
         <div className="create-button">
-          <button type="button" className="button is-button">
-            CREATE NEW PRODUCT
-          </button>
+            <Button text="CREATE NEW PRODUCT" type="button" url="/add-edit" />
         </div>
+        
       </section>
+      
 
       <style jsx>
         {`
@@ -50,37 +55,54 @@ await deleteProduct(id);
             padding-top: 6px;
           }
 
-          .your-products {
+          .your-products{
             margin-left: 45px;
             margin-right: 45px;
             padding: 20px;
-            background-color: #f2ede2;
+            background-color: #F2EDE2
           }
 
-          .edit-delete-buttons {
-            display: inline-block;
-            border: 1px solid red;
+          .product-list {
+            border: 2px solid green;
+            width: 80%;
             padding: 20px;
           }
 
-          button {
-            flex: 1;
-            display: block;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 1em;
-            color: #fff;
-            letter-spacing: 0.5px;
-            border-radius: 30px;
-            background: var(--secondary-color);
-            border: none;
-            outline: none;
-            transition: all 200ms;
+          .product-list-item {
+            border: 2px solid blue;
+            width: 150px;
+          
           }
-          button:hover {
-            cursor: pointer;
-            background: rgba(255, 56, 56, 0.7);
+
+          .float-child {
+             float: left;
+             border: 2px solid black;
+             width: 50%;
           }
+           
+
+          .edit-delete-buttons {
+            float: right;
+            border: 1px solid red;
+            padding: 0px;
+            
+          }
+
+          .create-button {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .centre {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+
         `}
       </style>
     </Layout>
