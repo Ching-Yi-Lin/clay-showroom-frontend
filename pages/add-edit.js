@@ -142,7 +142,7 @@ export default function Home({}) {
       <style jsx>
         {`
           .add-edit {
-            margin-top: 11px;
+            margin-top: 2px;
             margin-left: 45px;
             padding-top: 6px;
           }
@@ -177,11 +177,12 @@ export default function Home({}) {
           }
 
           .form-item {
-            padding: 15px 10px 10px 10px;
+            padding: 5px 10px 9px 10px;
             flex: 1;
             display: flex;
             flex-direction: column;
             letter-spacing: 0.5px;
+          
           }
 
           .form-item label {
