@@ -5,9 +5,14 @@
 }
 
 .paragraph {
-    background-color: rgb(207, 202, 191);
+    color: black !important;
     border: black;
-    border-radius: 1rem;
+    border-radius: 0rem;
     margin: 0rem;
-    padding: 1rem;
+    padding: 0rem;
+}
+
+.button {
+    background-color: green;
+    width: 30px;
 }
