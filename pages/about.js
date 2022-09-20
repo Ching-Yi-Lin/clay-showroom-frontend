@@ -21,9 +21,8 @@ export default function Home({ latestProductsData }) {
       </section>
       <section className={styles.about}>
       <div className={styles.content}>
-        <h2>Clay Showroom</h2>
+        <h4>Clay Showroom</h4>
         <p className={styles.paragraph}>
-          <br/>
            Connecting local ceramists with ceramic enthusiasts. We are an online platform where Ceramists can list and sell their products and the others can purchase their goods. <br/> <br/>
            Shop now or sell now by clicking the buttons below!<br/><br/>
           </p>
