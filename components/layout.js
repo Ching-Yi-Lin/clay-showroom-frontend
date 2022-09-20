@@ -39,6 +39,7 @@ export default function Layout({ children, home }) {
               height={28}
               width={128}
               alt="Logo"
+          
             />
           </a>
         </Link>
@@ -154,7 +155,7 @@ export default function Layout({ children, home }) {
          header{
           display: flex;
           justify-content: space-between;
-          margin-top: 4px;
+          margin-top: 10px;
           margin-right: 21px;
         }
           .bottom-bar {
