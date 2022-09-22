@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-
 import { getLatestProductsData, deleteProduct } from "../lib/products";
 import Link from "next/link";
 
@@ -15,39 +14,29 @@ export default function Home({ latestProductsData }) {
         <title>Sell | Clay Showroom</title>
       </Head>
       <section className="sell">YOUR PRODUCTS</section>
-      
-      
-      <section className="your-products">
-        <div className="centre">
-          <div className="product-list">
+           
+      <section className="your-products">   
+        <div className="product-list">
+          {latestProductsData.products.map((product) => (
             
-            {latestProductsData.products.map((product) => (
-            
-              <div className="float-child">
-                <div className="product-list-item" key={product.id}>                
-                  <img src="images/landing-vase.png" alt="" />
-                  {product.title}  
-                </div>
-
-
-              <div className="float-child">
-                <div className="edit-delete-buttons"> 
-                  <Button text="EDIT" url={`/add-edit?type=edit&id=${product.id}`} />
-                  <span style={{ margin: "5px", display: "inline-block"}}></span>
-                  <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
-                </div> 
-
-              </div>
+            <div className="product-list-item">
+              <div className="product-title"> {product.name} ${product.price}NZD </div>
+              <div className="product-image" key={product.id}>                
+                  <img src={product.imageUrl} alt="" />   
+              </div>              
+              <div className="edit-delete-buttons">
+                <Button text="EDIT" url={`/add-edit?type=edit&id=${product.id}`} />
+                <span style={{ margin: "5px", display: "inline-block"}}></span>
+                <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
+              </div> 
             </div>
-            ))}
-            
-          </div>
+            ))}  
         </div>
         
         <div className="create-button">
           <Link href="/add-edit?type=add">
             <a>
-              <div className="button is-button">CREATE NEW PRODUCT</div>
+              <Button text ="CREATE NEW PRODUCT" /> 
             </a>
           </Link>
         </div>
@@ -64,50 +53,38 @@ export default function Home({ latestProductsData }) {
           }
 
           .your-products{
-            margin-left: 45px;
-            margin-right: 45px;
-            padding: 20px;
+            padding: 20px; 
+          }
+
+          .product-list-item {
+            margin-bottom: 20px;
             background-color: #F2EDE2
           }
 
           .product-list {
-            border: 2px solid green;
-            width: 80%;
-            padding: 20px;
+            padding: 25px;
+            flex: 1;
+            justify-content: center;
           }
 
-          .product-list-item {
-            border: 2px solid blue;
-            width: 150px;
-          
-          }
-
-          .float-child {
-             float: left;
-             border: 2px solid black;
-             width: 50%;
-          }
-           
-
-          .edit-delete-buttons {
-            float: right;
-            border: 1px solid red;
-            padding: 0px;
+          .product-image, .product-title{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
             
           }
 
-          .create-button {
-            margin: auto;
-            display: flex;
-            align-items: center;
+          .edit-delete-buttons {
             justify-content: center;
+            display: flex;
+            padding: 20px;
           }
 
-          .centre {
-            margin: auto;
+          .create-button {
             display: flex;
-            align-items: center;
             justify-content: center;
+            margin-bottom: 90px;
           }
 
 
