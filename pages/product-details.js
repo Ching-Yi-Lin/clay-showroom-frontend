@@ -1,42 +1,70 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-import { getLatestProductsData } from "../lib/products";
-import { useEffect } from "react";
+import { createProduct, getProductById, updateProduct } from "../lib/products";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import ContactForm from "../components/contact-form";
+import styles from "../components/shop.module.css";
 
 
 
-export default function Home({ latestProductsData }) {
-  function deleteProduct(id){
-    
+export default function Home({}) {
+  const router = useRouter();
+  const [product, setProduct] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    imageUrl: "",
+  });
+
+  async function processSubmission(event) {
+    event.preventDefault();
+    const data = {
+      name: event.target.name.value,
+      category: event.target.category.value,
+      price: event.target.price.value,
+      description: event.target.description.value,
+      imageUrl: event.target.imageUrl.value,
+      userId: "631efc036747752e94b7e365",
+    };
   }
+
+
+
   return (
     <Layout home>
       <Head>
-        <title>Shopping Cart | Clay Showroom</title>
+        <title>Product Details | Clay Showroom</title>
       </Head>
-      <section className="sell">YOUR CART</section>
+      <section className="sell">SHOP</section>
+
+      <div className={styles.category}>
+        <ul><a href="#" className={styles.category__name}>ALL</a></ul>
+        <ul><a href="#" className={styles.category__name}>VASES</a></ul>
+        <ul><a href="#" className={styles.category__name}>MUGS</a></ul>
+        <ul><a href="#" className={styles.category__name}>OTHER</a></ul>
+      </div>      
        
       <section className="your-products">
         <div className="product-list">
 
-          {latestProductsData.products.map((product) => (
-            <div className="product-list-item" key={product.id}>
-              
+         
+        <div className="product-list-item" key={product.id}>
+              {product.name}
               <img src="images/landing-vase.png" alt="" />
-              {product.title}
+              <img src={product.imageUrl} alt="" />
+            </div>
 
               <div className="add-to-cart">
                 <Button text="ADD TO CART" onClick={()=> deleteProduct(product.id)} />    
               </div> 
               
-            </div>
-          ))}
+           
+          
         </div>
         
       </section>
-<br></br>
 
   <div className="App">
     <header className="App-header">
@@ -56,6 +84,7 @@ export default function Home({ latestProductsData }) {
           }
 
           .your-products, .contact-form{
+            margin-top: 20px;
             margin-left: 45px;
             margin-right: 45px;
             padding: 30px;
@@ -67,15 +96,7 @@ export default function Home({ latestProductsData }) {
           }
 
           .add-to-cart {
-            display: inline-block;  
-            
-          }
-
-          .create-button {
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;     
           }
 
 
@@ -84,14 +105,3 @@ export default function Home({ latestProductsData }) {
     </Layout>
   );
 }
-
-export async function getStaticProps() {
-  const latestProductsData = await getLatestProductsData();
-
-  return {
-    props: {
-      latestProductsData,
-    },
-  };
-}
-

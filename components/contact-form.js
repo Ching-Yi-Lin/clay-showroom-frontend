@@ -42,9 +42,7 @@ const ContactForm = () => {
         />
       </div>
       <div className="input">
-        <button id="submit-button" type="submit" color="blue">
-          SUBMIT
-        </button>
+        <Button id="submit-button" text="SUBMIT" type="submit" />
       </div>
     </form>
   );
