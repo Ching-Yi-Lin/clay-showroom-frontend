@@ -8,9 +8,15 @@ body {
 }
 
 :root {
+
+  --secondary-color: #3A5311;
+  --primary-color: #a8a397;
+  --tertiary-color: #F2EDE2;
+
     --primary-color: #a8a397;
     --secondary-color: #3A5311;
     --tertiary-color: #F2EDE2;
+
 }
 
 * {
@@ -22,8 +28,13 @@ p {
 }
 
 a {
+
+  color: #3A5311;
+  text-decoration: none;
+
     color: #0070f3;
     text-decoration: none;
+
 }
 
 a:hover {
@@ -36,7 +47,12 @@ img {
 }
 
 @media only screen and (min-width: 600px) {
+
+  
+}
+
     body {
-        /* background-color: lightblue; */
+       
     }
 }
+
