@@ -1,34 +1,34 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
-import { getLatestProductsData } from "../lib/products";
+import { getLatestProductsData, deleteProduct } from "../lib/products";
+import Link from "next/link";
 
 export default function Home({ latestProductsData }) {
-  function deleteProduct(id){
-    
+  async function deleteItem(id) {
+    await deleteProduct(id);
   }
   return (
     <Layout home>
       <Head>
         <title>Shopping Cart | Clay Showroom</title>
       </Head>
-      <section className="sell">YOUR CART</section>
+      <section className="cart">YOUR CART</section>
        
-      <section className="your-products">
+      <section className="your-products">   
         <div className="product-list">
-
           {latestProductsData.products.map((product) => (
-            <div className="product-list-item" key={product.id}>
-              
-              <img src="images/landing-vase.png" alt="" />
-              {product.title}
-
+            
+            <div className="product-list-item">
+              <div className="product-title"> {product.name} ${product.price}NZD </div>
+              <div className="product-image" key={product.id}>                
+                  <img src={product.imageUrl} alt="" />   
+              </div>              
               <div className="delete-button">
                 <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
               </div> 
-              
             </div>
-          ))}
+            ))}  
         </div>
         
         <div className="create-button">
@@ -39,32 +39,44 @@ export default function Home({ latestProductsData }) {
 
       <style jsx>
         {`
-          .sell {
+          .cart {
             margin-top: 11px;
             margin-left: 45px;
             padding-top: 6px;
           }
 
           .your-products{
-            margin-left: 45px;
-            margin-right: 45px;
             padding: 20px;
+          }
+
+          .product-list-item {
+            margin-bottom: 20px;
             background-color: #F2EDE2
           }
 
+          .product-list {
+            padding: 25px;
+            flex: 1;
+            justify-content: center;
+          }
+
+          .product-image, .product-title{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+          }
+
           .delete-button {
-            display: inline-block;
-            border: 1px solid red;
-            padding: 20px;
-            
+            display: flex;
+            justify-content: center;
+            padding: 20px;   
           }
 
           .create-button {
-            margin: auto;
-            margin-bottom:90px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            margin-bottom: 90px;
           }
 
 
