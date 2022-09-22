@@ -34,14 +34,14 @@ export default function Home({ latestProductsData }) {
       </section>
       <style jsx>
         {`
-          .main-landing {
+           .main-landing {
             margin: 0 auto;
             padding: 80px 20px;
-            margin-top: 4px;
             text-align: right;
             background: url(images/landing-bg.png) no-repeat center center fixed;
-            background-size: 554px
+            background-size: cover;
           }
+
           h1{
             margin-top: -4px;
             margin-bottom: 13px;
@@ -50,9 +50,12 @@ export default function Home({ latestProductsData }) {
           .main-landing .content {
             // width: 80%;
           }
-          .main-landing h1,
-          p {
+          .main-landing h1{
             color: white;
+          }
+          .main-landing p {
+            color: black;
+            font: bold
           }
           .sell-btn {
             color: black;
