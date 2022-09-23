@@ -63,7 +63,7 @@ export default function Home({}) {
           <div className="form-item">
             <label for="confrim-password">Confirm Password</label>
             <input
-               type="password"
+              type="password"
               name="confirmPassword"
               className="is-input"
               placeholder="Confirm Password"
@@ -159,7 +159,7 @@ export default function Home({}) {
             font-size: 1em;
             color: #fff;
             letter-spacing: 0.5px;
-            border-radius: 30px;
+
             background: var(--secondary-color);
             border: none;
             outline: none;
@@ -176,8 +176,8 @@ export default function Home({}) {
           .is-link {
             color: var(--secondary-color);
             flex: 1;
-            font-size: 1em;
-            font-weight: bold;
+            font-size: 0.8em;
+         
             text-align: center;
           }
 

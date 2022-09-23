@@ -2,10 +2,25 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import Button from "../components/button";
 import { getLatestProductsData } from "../lib/products";
-import styles from "../components/about.module.css"
-export default function Home({ latestProductsData }) {
+import styles from "../components/about.module.css";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { isLoggedIn } from "../lib/users";
+export default function About() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const router = useRouter();
+
+  async function checkLogIn() {
+    let isLoggedInUser = await isLoggedIn();
+    if (!isLoggedInUser) {
+      router.push("/signin");
+    } else {
+      router.push("/sell");
+    }
+  }
+
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>About | Clay Showroom</title>
       </Head>
@@ -16,22 +31,24 @@ export default function Home({ latestProductsData }) {
             A Ceramics Marketplace. Find hand-crafted pieces made by local
             ceramists or sell your unique ceramics
           </p>
-          
         </div>
       </section>
       <section className={styles.about}>
-      <div className={styles.content}>
-        <h4>Clay Showroom</h4>
-        <p className={styles.paragraph}>
-           Connecting local ceramists with ceramic enthusiasts. We are an online platform where Ceramists can list and sell their products and the others can purchase their goods. <br/> <br/>
-           Shop now or sell now by clicking the buttons below!<br/><br/>
+        <div className={styles.content}>
+          <h4>Clay Showroom</h4>
+          <p className={styles.paragraph}>
+            Connecting local ceramists with ceramic enthusiasts. We are an
+            online platform where Ceramists can list and sell their products and
+            the others can purchase their goods. <br /> <br />
+            Shop now or sell now by clicking the buttons below!
+            <br />
+            <br />
           </p>
-          <br/>
+          <br />
         </div>
-        <Button text="SELL" url="/signin" />
-          <span style={{ width: "10px", display: "inline-block"}}></span>
-          <Button text="SHOP" url="/shop" />
-
+        <Button text="SELL" onClick={checkLogIn}/>
+        <span style={{ width: "10px", display: "inline-block" }}></span>
+        <Button text="SHOP" url="/shop" />
       </section>
 
       <style jsx>

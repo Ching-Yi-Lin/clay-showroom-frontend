@@ -95,18 +95,7 @@ export default function Home({}) {
             flex-direction: column;
             width: 300px;
           }
-          .avatar {
-            position: absolute;
-            background: #74b9ff;
-            border-radius: 50%;
-            top: -10%;
-            left: 40%;
-            z-index: 4;
-          }
-          .avatar img {
-            width: 64px;
-            height: 64px;
-          }
+          
 
           .form-item {
             padding: 15px 10px 10px 10px;
@@ -156,7 +145,7 @@ export default function Home({}) {
             font-size: 1em;
             color: #fff;
             letter-spacing: 0.5px;
-            border-radius: 30px;
+           
             background: var(--secondary-color);
             border: none;
             outline: none;
@@ -181,8 +170,8 @@ export default function Home({}) {
           .is-link {
             color: var(--secondary-color);
             flex: 1;
-            font-size: 1em;
-            font-weight: bold;
+            font-size: 0.8em;
+           
             text-align: center;
           }
 

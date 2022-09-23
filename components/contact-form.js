@@ -9,7 +9,7 @@ const ContactForm = () => {
       <div className="input">
         <textarea
           className="comments"
-          placeholder="Ask a question/share your thoughts!"
+          placeholder="Ask a question / share your thoughts!"
           id=""
           cols="30"
           rows="10"
