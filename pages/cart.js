@@ -14,24 +14,11 @@ export default function Home({ latestProductsData }) {
 
       <section className="your-products">
         <div className="product-list">
-          {latestProductsData.products.map((product) => (
-            <div className="product-list-item">
-              <div className="product-title">
-                {" "}
-                {product.name} ${product.price}{" "}
-              </div>
-              <div className="product-image" key={product.id}>
-                <img src={product.imageUrl} alt="" />
-              </div>
-              <div className="delete-button">
-                <Button text="REMOVE" />
-              </div>
-            </div>
-          ))}
+          Your cart is empty
         </div>
 
         <div className="create-button">
-          <Button text="MAKE A PAYMENT" type="button" />
+          <Button text="GO TO SHOP" url="/shop" />
         </div>
       </section>
 

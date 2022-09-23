@@ -6,7 +6,9 @@ import Link from "next/link";
 
 export default function Home({ latestProductsData }) {
   async function deleteItem(id) {
-    await deleteProduct(id);
+    await deleteProduct(id).then(() => {
+      window.location.reload();
+    });
   }
   return (
     <Layout home>
@@ -14,35 +16,38 @@ export default function Home({ latestProductsData }) {
         <title>Sell | Clay Showroom</title>
       </Head>
       <section className="sell">YOUR PRODUCTS</section>
-           
-      <section className="your-products">   
+
+      <section className="your-products">
         <div className="product-list">
           {latestProductsData.products.map((product) => (
-            
             <div className="product-list-item">
-              <div className="product-title"> {product.name} ${product.price} </div>
-              <div className="product-image" key={product.id}>                
-                  <img src={product.imageUrl} alt="" />   
-              </div>              
+              <div className="product-title">
+                {" "}
+                {product.name} ${product.price}{" "}
+              </div>
+              <div className="product-image" key={product.id}>
+                <img src={product.imageUrl} alt="" />
+              </div>
               <div className="edit-delete-buttons">
-                <Button text="EDIT" url={`/add-edit?type=edit&id=${product.id}`} />
-                <span style={{ margin: "5px", display: "inline-block"}}></span>
-                <Button text="DELETE" onClick={()=> deleteProduct(product.id)} />    
-              </div> 
+                <Button
+                  text="EDIT"
+                  url={`/add-edit?type=edit&id=${product.id}`}
+                />
+                <span style={{ margin: "5px", display: "inline-block" }}></span>
+                <Button text="DELETE" onClick={() => deleteItem(product.id)} />
+              </div>
             </div>
-            ))}  
+          ))}
         </div>
-        
+
         <div className="create-button">
           <Link href="/add-edit?type=add">
             <a>
-              <Button text ="CREATE NEW PRODUCT" /> 
+              <Button text="CREATE NEW PRODUCT" />
             </a>
           </Link>
         </div>
-        
       </section>
-      
 
       <style jsx>
         {`
@@ -52,13 +57,13 @@ export default function Home({ latestProductsData }) {
             padding-top: 6px;
           }
 
-          .your-products{
-            padding: 20px; 
+          .your-products {
+            padding: 20px;
           }
 
           .product-list-item {
             margin-bottom: 20px;
-            background-color: #F2EDE2
+            background-color: #f2ede2;
           }
 
           .product-list {
@@ -67,12 +72,12 @@ export default function Home({ latestProductsData }) {
             justify-content: center;
           }
 
-          .product-image, .product-title{
+          .product-image,
+          .product-title {
             flex: 1;
             display: flex;
             justify-content: center;
             padding: 10px;
-            
           }
 
           .edit-delete-buttons {
@@ -86,8 +91,6 @@ export default function Home({ latestProductsData }) {
             justify-content: center;
             margin-bottom: 90px;
           }
-
-
         `}
       </style>
     </Layout>

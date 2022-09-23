@@ -67,11 +67,11 @@ export default function Layout({ children, home }) {
         </Link>
 
         <Link href="/signin">
-          <a>Login</a>
+          <a>Sign In</a>
         </Link>
 
-        <Link href="/">
-          <a>Logout</a>
+        <Link href="/signup">
+          <a>Sign Up</a>
         </Link>
       </div>
       <main className="main">{children}</main>
@@ -104,7 +104,7 @@ export default function Layout({ children, home }) {
               </div>
             </a>
           </Link>
-          <Link href="/cartabout">
+          <Link href="/cart">
             <a>
               <div className="icon-btn">
                 <Image

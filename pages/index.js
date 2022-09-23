@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 export default function Home({ latestProductsData }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
+
   async function checkLogIn() {
     let isLoggedInUser = await isLoggedIn();
     if (!isLoggedInUser) {
@@ -18,9 +19,8 @@ export default function Home({ latestProductsData }) {
     } else {
       router.push("/sell");
     }
-
-    console.log(isLoggedInUser);
   }
+   
 
   return (
     <Layout home>
