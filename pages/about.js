@@ -28,7 +28,7 @@ export default function Home({ latestProductsData }) {
           </p>
           <br/>
         </div>
-        <Button text="SELL" url="/sell" />
+        <Button text="SELL" url="/signin" />
           <span style={{ width: "10px", display: "inline-block"}}></span>
           <Button text="SHOP" url="/shop" />
 

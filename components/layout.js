@@ -39,46 +39,42 @@ export default function Layout({ children, home }) {
               height={28}
               width={128}
               alt="Logo"
-          
             />
           </a>
         </Link>
         <span className="hamburger" onClick={openNav}>
           &#9776;{" "}
         </span>
-
-        
       </header>
       <div id="mySidenav" className="sidenav">
-          <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
-            &times;
-          </a>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+        <span className="closebtn" onClick={closeNav}>
+          &times;
+        </span>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
 
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
 
-          <Link href="/shop">
-            <a>Shop</a>
-          </Link>
+        <Link href="/shop">
+          <a>Shop</a>
+        </Link>
 
-          <Link href="/cart">
-            <a>Cart</a>
-          </Link>
+        <Link href="/cart">
+          <a>Cart</a>
+        </Link>
 
-          <Link href="/signin">
-            <a>Login</a>
-          </Link>
+        <Link href="/signin">
+          <a>Login</a>
+        </Link>
 
-          <Link href="/">
-            <a>Logout</a>
-          </Link>
-
-        </div>
-      <main>{children}</main>
+        <Link href="/">
+          <a>Logout</a>
+        </Link>
+      </div>
+      <main className="main">{children}</main>
 
       <footer>
         <div className="bottom-bar">
@@ -152,12 +148,15 @@ export default function Layout({ children, home }) {
       <style></style>
       <style jsx>
         {`
-         header{
-          display: flex;
-          justify-content: space-between;
-          margin-top: 10px;
-          margin-right: 21px;
-        }
+          .main {
+            padding-bottom: 100px;
+          }
+          header {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            margin-right: 21px;
+          }
           .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -181,6 +180,7 @@ export default function Layout({ children, home }) {
           }
 
           /* hamburger menu*/
+         
           .sidenav {
             height: 100%;
             width: 0;
@@ -214,6 +214,7 @@ export default function Layout({ children, home }) {
             right: 25px;
             font-size: 36px;
             margin-left: 50px;
+            color: white;
           }
 
           @media screen and (max-height: 450px) {

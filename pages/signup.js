@@ -15,6 +15,7 @@ export default function Home({}) {
     };
 
     await createUser(data).then(() => {
+      localStorage.setItem("isLoggedIn", true);
       router.push("/");
     });
   }
@@ -26,12 +27,6 @@ export default function Home({}) {
       <section className="sign-up">SIGN UP</section>
       <div className="container">
         <form className="form" onSubmit={processSubmission}>
-          <div className="avatar">
-            <img
-              src="images/signin-logo.png"
-              alt="avatar"
-            />
-          </div>
           <div className="form-item">
             <label for="fullname">Full Name</label>
             <input
@@ -68,7 +63,7 @@ export default function Home({}) {
           <div className="form-item">
             <label for="confrim-password">Confirm Password</label>
             <input
-              type="text"
+               type="password"
               name="confirmPassword"
               className="is-input"
               placeholder="Confirm Password"
@@ -115,18 +110,6 @@ export default function Home({}) {
             flex-direction: column;
             width: 300px;
           }
-          .avatar {
-            position: absolute;
-            background: #74b9ff;
-            border-radius: 50%;
-            top: -10%;
-            left: 40%;
-            z-index: 4;
-          }
-          .avatar img {
-            width: 64px;
-            height: 64px;
-          }
 
           .form-item {
             padding: 15px 10px 10px 10px;
@@ -152,7 +135,7 @@ export default function Home({}) {
             border-left: none;
             border-right: none;
             caret-color: #fff;
-            color: #1E1E1E;
+            color: #1e1e1e;
             transition: all 200ms;
             border-bottom-color: #fff;
           }
@@ -188,7 +171,6 @@ export default function Home({}) {
           }
           .form-item a {
             text-decoration: none;
-      
           }
 
           .is-link {
