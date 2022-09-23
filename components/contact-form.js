@@ -1,46 +1,21 @@
 import React, { useState } from "react";
 import Button from "./button";
 
-const FORM_ENDPOINT = ""; // form results will go here
+const FORM_ENDPOINT = "";
 
 const ContactForm = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = () => {
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 100);
-  };
-
   return (
-    <form
-      action={FORM_ENDPOINT}
-      onSubmit={handleSubmit}
-      method="POST"
-      target="_blank"
-    >
-      <div className="input">
-        <input
-          type="text"
-          placeholder="Your name"
-          name="name"
-          required
-        />
-      </div>
-      <div className="input">
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          required
-        />
-      </div>
+    <form method="POST" target="_blank">
       <div className="input">
         <textarea
+          className="comments"
           placeholder="Ask a question/share your thoughts!"
-          name="message"
-          required
-        />
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
       </div>
+
       <div className="input">
         <Button id="submit-button" text="SUBMIT" type="submit" />
       </div>
@@ -48,10 +23,6 @@ const ContactForm = () => {
   );
 };
 
-<style jsx>
-{`
-
-`}
-</style>
+<style jsx>{``}</style>;
 
 export default ContactForm;

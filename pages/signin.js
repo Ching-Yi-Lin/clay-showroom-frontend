@@ -17,6 +17,7 @@ export default function Home({}) {
         alert("Oops! Sorry you can't come in");
       }
       if (res.status === 200) {
+        localStorage.setItem("isLoggedIn", true);
         router.push("/sell");
       }
     });
@@ -29,10 +30,6 @@ export default function Home({}) {
       <section className="sign-in">SIGN IN</section>
       <div className="container">
         <form className="form" onSubmit={processSubmission}>
-          <div className="avatar">
-            <img src="images/signin-logo.png" alt="avatar" />
-          </div>
-
           <div className="form-item">
             <label for="email">Email</label>
             <input

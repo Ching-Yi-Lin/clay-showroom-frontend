@@ -20,7 +20,7 @@ export default function Home({ latestProductsData }) {
           {latestProductsData.products.map((product) => (
             
             <div className="product-list-item">
-              <div className="product-title"> {product.name} ${product.price}NZD </div>
+              <div className="product-title"> {product.name} ${product.price} </div>
               <div className="product-image" key={product.id}>                
                   <img src={product.imageUrl} alt="" />   
               </div>              

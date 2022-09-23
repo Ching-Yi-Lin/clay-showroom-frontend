@@ -4,7 +4,6 @@ import styles from "../components/shop.module.css";
 import Link from "next/link";
 import { getLatestProductsData } from "../lib/products";
 
-
 export default function Home({ latestProductsData }) {
   return (
     <Layout home>
@@ -13,40 +12,55 @@ export default function Home({ latestProductsData }) {
       </Head>
       <section className={styles.shop}>SHOP</section>
       <div className={styles.category}>
-      <ul><a href="#" className={styles.category__name}>ALL</a></ul>
-      <ul><a href="/shop-vases" className={styles.category__name}>VASES</a></ul>
-      <ul><a href="#" className={styles.category__name}>MUGS</a></ul>
-      <ul><a href="#" className={styles.category__name}>OTHER</a></ul>
-        </div>
-    
-<h4 class={styles.shop__title}>LATEST PRODUCTS</h4>
+        <ul>
+          <a href="#" className={styles.category__name}>
+            ALL
+          </a>
+        </ul>
+        <ul>
+          <a href="/shop-vases" className={styles.category__name}>
+            VASES
+          </a>
+        </ul>
+        <ul>
+          <a href="#" className={styles.category__name}>
+            MUGS
+          </a>
+        </ul>
+        <ul>
+          <a href="#" className={styles.category__name}>
+            OTHER
+          </a>
+        </ul>
+      </div>
 
-<section class={styles.container}>
-  <section class={styles.shopcard}>
-  {latestProductsData.products.map((product) => (
-            <div class={styles.shop__item}>
-                   <Link href="/product-details">
-                <img class={styles.shop__image} src={product.imageUrl}/></Link>
-                <div class={styles.shop__item__details}>
-                    <span class={styles.shop__item__name} > {product.name}</span>
-                    <span class={styles.shop__item__price}>{product.price}</span>
+      <h4 className={styles.shop__title}>LATEST PRODUCTS</h4>
+
+      <section className={styles.container}>
+        {latestProductsData.products.map((product) => (
+          <Link href={`/product-details?id=${product.id}`}>
+            <div className={styles.shopcard}>
+              <div className={styles.shop__item}>
+                <img className={styles.shop__image} src={product.imageUrl} />
+                <div className={styles.shop__item__details}>
+                  <span className={styles.shop__item__price}>${product.price}</span>
+                  <span className={styles.btn__primary}>{product.name}</span>
                 </div>
+              </div>
             </div>
-          ))}</section>
-          </section>     
-          
+          </Link>
+        ))}
+      </section>
     </Layout>
-      );
-    }
-    
+  );
+}
+
 export async function getStaticProps() {
-      const latestProductsData = await getLatestProductsData();
-    
-      return {
-        props: {
-          latestProductsData,
-        },
-      };
-    }
+  const latestProductsData = await getLatestProductsData();
 
-
+  return {
+    props: {
+      latestProductsData,
+    },
+  };
+}
