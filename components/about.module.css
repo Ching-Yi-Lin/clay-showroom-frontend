@@ -1,0 +1,18 @@
+.about {
+    font-size: 1 rem;
+    color: black(88, 71, 62);
+    padding: 1rem;
+}
+
+.paragraph {
+    color: black !important;
+    border: black;
+    border-radius: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.button {
+    background-color: green;
+    width: 30px;
+}
